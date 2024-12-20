@@ -39,24 +39,22 @@ impl Column {
         let random_index = rand::rng().random_range(0..100);
         let rand_distance: usize = rand::rng().random_range(self.length/3..self.length/2) as usize;
 
-        if self.vector_start_index==0 && random_index > 5 {
+        if self.vector_start_index == 0 && random_index > 5 {
+            if self.vector_end_index < self.characters.len() {
+                self.characters[self.vector_end_index] = ' ';
+                self.vector_end_index = (self.vector_end_index + 1) % self.characters.len();
+            }
             return;
         }
 
-        self.characters[self.vector_start_index] = get_random_char();
-        self.vector_start_index += 1;
+        if self.vector_start_index < self.characters.len() {
+            self.characters[self.vector_start_index] = get_random_char();
+            self.vector_start_index = (self.vector_start_index + 1) % self.characters.len();
+        }
 
-        if self.vector_start_index >= rand_distance || self.vector_end_index != 0 {
+        if self.vector_start_index >= rand_distance && self.vector_end_index < self.characters.len() {
             self.characters[self.vector_end_index] = ' ';
-            self.vector_end_index += 1;
-        }
-
-        if self.vector_start_index >= self.length as usize {
-            self.vector_start_index = 0;
-        }
-
-        if self.vector_end_index >= self.length as usize {
-            self.vector_end_index = 0;
+            self.vector_end_index = (self.vector_end_index + 1) % self.characters.len();
         }
     }
 }
