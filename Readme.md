@@ -19,3 +19,5 @@ cargo run
 
 ## Example
 ![Matrix Rainfall](Green-MatrixRainfall.png)
+![Blue Matrix Rainfall](Blue-MatrixFall.png)
+![YellowBlue Matrix Fall](YellowBlue-MatrixFall.png)
