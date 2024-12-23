@@ -10,31 +10,14 @@ const CHARS: [char; 2] = ['1', '0'];
 #[derive(Clone)]
 pub struct Symbol {
     character: char,
-    color: String,
-    is_first: bool
+    color: String
 }
 
 impl Symbol {
-    pub fn new(character: char, color: &str) -> Self {
-        Self {
-            character,
-            color: String::from(color),
-            is_first: false
-        }
-    }
-
-    // pub fn set_white_symbol() -> Self {
-    //     Self {
-    //         character: get_random_char(),
-    //         color: String::from("#FFFFFF"),
-    //     }
-    // }
-
     pub fn set_first_symbol(color: &str) -> Self {
         Self {
             character: get_random_char(),
-            color: String::from(color),
-            is_first: true
+            color: String::from(color)
         }
     }
 
@@ -49,8 +32,7 @@ impl Symbol {
     pub fn set_empty() -> Self {
         Self {
             character: ' ',
-            color: String::from("#000000"),
-            is_first: false
+            color: String::from("#000000")
         }
     }
 
