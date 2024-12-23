@@ -19,11 +19,13 @@ fn main() -> Result<()> {
 
     let mut matrix = Matrix::new(width, height, character_color, background_color);
 
+    let frame_speed = (1000f64 / 10 as f64).round() as u64;
+
     loop{
         matrix.init(&mut stdout).context("Initialize matrix")?;
         matrix.update();
 
-        sleep(Duration::from_millis(100));
+        sleep(Duration::from_millis(frame_speed));
     }
 }
 

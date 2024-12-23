@@ -35,11 +35,11 @@ impl Column {
         }
 
         let random_index = rand::rng().random_range(0..self.width);
-        let rand_distance: usize = rand::rng().random_range(self.length/2..self.length) as usize;
+        let rand_distance: usize = rand::rng().random_range(self.length - 20..self.length) as usize;
 
         for i in 0..self.characters.len() {
             if !self.characters[i].is_empty() {
-                self.characters[i].set_random_symbol_without_color();
+                self.characters[i].set_random_symbols();
             }
         }
 
@@ -53,7 +53,7 @@ impl Column {
         }
 
         if self.vector_start_index < self.characters.len() {
-            self.characters[self.vector_start_index] = Symbol::set_random_symbol_with_color(&self.character_color);
+            self.characters[self.vector_start_index] = Symbol::set_first_symbol(&self.character_color);
             self.vector_start_index = (self.vector_start_index + 1) % self.characters.len();
         }
     }
