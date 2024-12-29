@@ -48,7 +48,7 @@ impl Column {
             self.vector_end_index = (self.vector_end_index + 1) % self.characters.len();
         }
 
-        if self.vector_start_index == 0 && random_index > 1 {
+        if self.vector_start_index == 0 && random_index > 2 {
             return;
         }
 

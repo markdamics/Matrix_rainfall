@@ -5,8 +5,11 @@ use crossterm::style::{ Print, SetForegroundColor};
 use rand::Rng;
 use crate::get_crossterm_color;
 
-//ToDo: Add more characters
-const CHARS: [char; 2] = ['1', '0'];
+const CHARS: [char; 2] = ['1', '0']; // This is working
+// const CHARS: [char; 67] = [
+//     '日', 'ﾊ', 'ﾐ', 'ﾋ', 'ｰ', 'ｳ', 'ｼ', 'ﾅ', 'ﾓ', 'ﾆ', 'ｻ', 'ﾜ', 'ﾂ', 'ｵ', 'ﾘ', 'ｱ', 'ﾎ', 'ﾃ', 'ﾏ', 'ｹ', 'ﾒ', 'ｴ', 'ｶ', 'ｷ', 'ﾑ', 'ﾕ', 'ﾗ', 'ｾ', 'ﾈ', 'ｽ', 'ﾀ', 'ﾇ', 'ﾍ', 'ｦ', 'ｲ', 'ｸ', 'ｺ', 'ｿ', 'ﾁ', 'ﾄ', 'ﾉ', 'ﾌ', 'ﾔ', 'ﾖ', 'ﾙ', 'ﾚ', 'ﾛ', 'ﾝ', '0', '1', '2', '3', '4', '5', '7', '8', '9', 'Z', '=', '*', '+', '-', '<', '>', '¦', '|', 'ç'
+// ]; // This is not working, why?
+
 
 #[derive(Clone)]
 pub struct Symbol {
@@ -25,7 +28,7 @@ impl Symbol {
     }
 
     pub fn set_random_symbols(&mut self) -> () {
-            self.character = get_random_char()
+        self.character = get_random_char()
     }
 
     pub fn is_empty(&self) -> bool {
