@@ -20,7 +20,7 @@ fn main() -> Result<()> {
     let mut character_color = String::from("#04ff00");
     let mut background_color = String::from("#000000");
 
-    let mut speed: u32 = 13;
+    let mut speed: u32 = 20;
 
     while let Some(arg) = args.next() {
         match arg.as_str() {

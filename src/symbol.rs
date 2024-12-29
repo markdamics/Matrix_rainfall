@@ -5,19 +5,22 @@ use crossterm::style::{ Print, SetForegroundColor};
 use rand::Rng;
 use crate::get_crossterm_color;
 
+//ToDo: Add more characters
 const CHARS: [char; 2] = ['1', '0'];
 
 #[derive(Clone)]
 pub struct Symbol {
     character: char,
-    color: String
+    color: String,
+    base_color: String
 }
 
 impl Symbol {
     pub fn set_first_symbol(color: &str) -> Self {
         Self {
             character: get_random_char(),
-            color: String::from(color)
+            color: String::from("#FFFFFF"),
+            base_color: String::from(color)
         }
     }
 
@@ -32,7 +35,8 @@ impl Symbol {
     pub fn set_empty() -> Self {
         Self {
             character: ' ',
-            color: String::from("#000000")
+            color: String::from("#000000"),
+            base_color: String::from("#000000")
         }
     }
 
@@ -44,6 +48,11 @@ impl Symbol {
     }
 
     pub fn fade(&mut self) -> () {
+        //This makes the first symbol white
+        if self.color == "#FFFFFF" {
+            self.color = self.base_color.clone();
+            return;
+        }
         let rgb_color = Rgb::from_hex_str(&self.color).unwrap();
         let hex_color = rgb_color.to_hsl();
         let hue = hex_color.get_hue();
